@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-import { AntDesign } from '@expo/vector-icons';
+import Button from './Button';
 // import { Container } from './styles';
 import { Dimensions } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const Card = ({name, uriImg, price, promoPrice, size}) => {
+const Card = ({name, uriImg, price, size}) => {
   return (
     <View style={styles.container}>
       <View style={styles.imgContent}>
@@ -15,10 +15,10 @@ const Card = ({name, uriImg, price, promoPrice, size}) => {
       </View>
       <View style={styles.contentValue}>
         <Text style={styles.mainValue}>
-          {price}
+          {(price-(price*0.1)).toFixed(2)}
         </Text>
         <Text style={styles.promotionValue}>
-          {price-(price*0.1)}
+          {price}
         </Text>
       </View>
       
@@ -45,15 +45,8 @@ const Card = ({name, uriImg, price, promoPrice, size}) => {
         </Text>
       </View>
 
-      <View style={styles.contentButtons}>
-        <TouchableOpacity style={styles.button}>
-          <AntDesign name="minus" size={24} color="#56C66A" />
-        </TouchableOpacity>
-        <Text style={styles.quantityIncremented}>0</Text>
-        <TouchableOpacity style={styles.button}>
-          <AntDesign name="plus" size={24} color="#56C66A" />
-        </TouchableOpacity>
-      </View>
+      <Button priceItem={(price-(price*0.1)).toFixed(2)}/>
+      
     </View>  
   );
 }
@@ -119,23 +112,6 @@ const styles = StyleSheet.create({
     fontFamily: 'roboto-regular',
     fontSize: 18
   },
-  contentButtons:{
-    overflow: 'hidden',
-    alignItems: 'center',
-    justifyContent:'space-evenly',
-    flexDirection: 'row',
-    marginTop: 10,
-    padding: 10,
-    shadowColor: "#F3F3F3",
-    elevation: 0.3,
-    borderWidth: 0.2,
-    borderEndColor: '#D6D6D7',
-    borderBottomLeftRadius: 3,
-    borderBottomRightRadius: 3
-  },
-  quantityIncremented:{
-    fontFamily: 'roboto-regular',
-    fontSize: 20
-  },
+  
 })
 export default Card;

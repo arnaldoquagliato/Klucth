@@ -2,7 +2,12 @@ import React, {useState} from 'react';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import Main from "./src/index";
+
+import { ProductsContext } from "./src/context/ProductsContext";
 export default function App() {
+  const [quantidade, setQuantidade] = useState(0)
+  const [totalPrice, setTotalPrice] = useState(0)
+
   const [fontLoaded, setFontLoaded] = useState(false) 
 
   const fetchFonts = () => {
@@ -22,7 +27,9 @@ export default function App() {
       );
     }
   return (
-    <Main />
+    <ProductsContext.Provider value={{quantidade, setQuantidade, totalPrice, setTotalPrice}}>
+      <Main />
+    </ProductsContext.Provider>
   );
 }
 

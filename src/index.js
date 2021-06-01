@@ -22,8 +22,10 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import imgBackground from './assets/images/grocery-header.jpg'
 import Card from "../src/components/Card";
 import CardImage from '../src/components/CardImage'
+import ModalForm from "../src/components/ModalForm";
 
 import { Dimensions } from 'react-native';
+import { ProductsContext } from './context/ProductsContext';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
@@ -82,7 +84,13 @@ window.server = createServer ({
 const App = () => {
   const [products, setProducts] = useState([])
   const [text, setText] = useState('')
+  const [showModal, setShowModal] = useState(false)
 
+  const {quantidade, totalPrice} = useContext(ProductsContext)
+
+  const handleModal = () => {
+    setShowModal(!showModal);
+  }
 
   useEffect(() => {
     let fetchProducts = async () => {
@@ -129,7 +137,7 @@ const App = () => {
               </View>
               <View  style={styles.headerIconQuantidade}>
                 <View style={styles.headerIconQuantidadeValue}>
-                  <Text style={{color: 'white'}}>0</Text>
+                  <Text style={{color: 'white'}}>{quantidade}</Text>
                 </View>
                 <View style={styles.headerIconQuantidadeIcon}>
                 <FontAwesome5 name="shopping-basket" size={24} color="white" />
@@ -187,10 +195,10 @@ const App = () => {
           horizontal
           showsHorizontalScrollIndicator={false}
           />  
-        <TouchableOpacity style={styles.contentButtonCesta}>
+        <TouchableOpacity style={styles.contentButtonCesta} onPress={handleModal}>
           <View style={styles.valueQuantidadeItens}>
             <Text style={{color: 'white', fontFamily: 'roboto-regular', fontSize: 18, padding: 5, left: 10 }}>
-              4
+              {quantidade}
             </Text>
           </View>
             <Text style={{color: 'white', fontFamily: 'roboto-bold', fontSize: 20}}>
@@ -198,9 +206,11 @@ const App = () => {
             </Text>
 
             <Text style={{color: 'white', fontFamily: 'roboto-regular', fontSize: 18,marginRight: 10}}>
-              R$ 20,84
+              R$ {(totalPrice).toFixed(2)}
             </Text>
         </TouchableOpacity>
+
+        <ModalForm modalVisible={showModal} handleModal={handleModal} />
     </View>
   );
 };
