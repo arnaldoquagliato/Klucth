@@ -7,18 +7,18 @@ import { Dimensions } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const Card = () => {
+const Card = ({name, uriImg, price, promoPrice, size}) => {
   return (
     <View style={styles.container}>
       <View style={styles.imgContent}>
-        <Image source={{ uri: "https://www.petlove.com.br/images/products/186932/large/Pedigree_Biscrok_Adulto_Pequenas_3101854-2.jpg?1556408192" }} style={{width: 100, height: 100}} resizeMode={'contain'}/>
+        <Image source={{ uri: uriImg }} style={{width: 100, height: 100}} resizeMode={'contain'}/>
       </View>
       <View style={styles.contentValue}>
         <Text style={styles.mainValue}>
-          R$ 5,21
+          {price}
         </Text>
         <Text style={styles.promotionValue}>
-          R$ 5,79
+          {price-(price*0.1)}
         </Text>
       </View>
       
@@ -29,19 +29,19 @@ const Card = () => {
           </Text>
         </View>
         <Text style={styles.promotionSave}>
-          Poupe R$ 0,58
+          Poupe R$ {(price*0.1).toFixed(2)}
         </Text>
       </View>
       
       <View style={styles.contentName}>
         <Text style={styles.productText} numberOfLines={1} ellipsizeMode='tail' allowFontScaling={false}>
-          Petisco Pedigree Muito bom para gatos
+          {name}
         </Text>
       </View>
       
       <View style={styles.contentQuantity}>
         <Text style={styles.productQuantity}>
-          45 g
+          {size} g
         </Text>
       </View>
 
