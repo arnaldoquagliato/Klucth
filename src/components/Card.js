@@ -47,11 +47,11 @@ const Card = () => {
 
       <View style={styles.contentButtons}>
         <TouchableOpacity style={styles.button}>
-          <AntDesign name="minus" size={24} color="#A8D6B3" />
+          <AntDesign name="minus" size={24} color="#56C66A" />
         </TouchableOpacity>
         <Text style={styles.quantityIncremented}>0</Text>
         <TouchableOpacity style={styles.button}>
-          <AntDesign name="plus" size={24} color="#A8D6B3" />
+          <AntDesign name="plus" size={24} color="#56C66A" />
         </TouchableOpacity>
       </View>
     </View>  
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent:'space-evenly',
     flexDirection: 'row',
-    marginTop: 20,
+    marginTop: 10,
     padding: 10,
     shadowColor: "#F3F3F3",
     elevation: 0.3,

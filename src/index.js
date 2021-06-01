@@ -6,7 +6,8 @@ import {
   View,
   TextInput,
   FlatList,
-  ImageBackground
+  ImageBackground,
+  TouchableOpacity
 } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons'; 
@@ -90,7 +91,7 @@ const App = () => {
         </View>
         <View style={styles.contentSubtitlePlus}>
           <Text style={styles.contentSubtitlePlusText}>Ver mais</Text>
-          <MaterialIcons name="keyboard-arrow-right" size={24} color="#A8D6B3" />
+          <MaterialIcons name="keyboard-arrow-right" size={24} color="#56C66A" />
         </View>
 
       </View>
@@ -104,15 +105,15 @@ const App = () => {
           horizontal
           showsHorizontalScrollIndicator={false}
           />  
+          
         <View style={styles.contentBestSeller}>
-          <View style={styles.contentBestSellerTitle}>
             <Text style={styles.contentBestSellerText}>
               Produtos Mais Vendidos
             </Text>
-          <View style={styles.contentSubtitlePlus}>
-            <Text style={styles.contentSubtitlePlusText}>Ver mais</Text>
-            <MaterialIcons name="keyboard-arrow-right" size={24} color="#A8D6B3" />
-          </View>
+            <View style={{justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginRight: 15}}>
+              <Text style={styles.contentSubtitlePlusText}>Ver mais</Text>
+              <MaterialIcons name="keyboard-arrow-right" size={24} color="#56C66A" />
+            </View>
           </View>
 
           <FlatList 
@@ -124,7 +125,20 @@ const App = () => {
           horizontal
           showsHorizontalScrollIndicator={false}
           />  
-        </View>
+        <TouchableOpacity style={styles.contentButtonCesta}>
+          <View style={styles.valueQuantidadeItens}>
+            <Text style={{color: 'white', fontFamily: 'roboto-regular', fontSize: 18, padding: 5, left: 10 }}>
+              4
+            </Text>
+          </View>
+            <Text style={{color: 'white', fontFamily: 'roboto-bold', fontSize: 20}}>
+              Ver cesta
+            </Text>
+
+            <Text style={{color: 'white', fontFamily: 'roboto-regular', fontSize: 18,marginRight: 10}}>
+              R$ 20,84
+            </Text>
+        </TouchableOpacity>
     </View>
   );
 };
@@ -214,7 +228,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     flexDirection: 'row',
-    marginTop: windowHeight/7,
+    marginTop: windowHeight/6,
     position: 'absolute'
   },
   contentSubtitleText:{
@@ -227,14 +241,38 @@ const styles = StyleSheet.create({
   },
   contentSubtitlePlusText:{
     fontFamily: 'roboto-bold', 
-    color: "#85B997"
+    color: "#56C66A"
   },
   contentBestSeller:{
     flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   contentBestSellerTitle:{
 
   },
+  contentBestSellerText:{
+    fontFamily: 'roboto-bold',
+    color: "#575A5C",
+    fontSize: 20,
+    marginLeft: 15,
+  },
+  contentButtonCesta:{
+    height: 60,
+    width: '100%',
+    backgroundColor: '#56C66A',
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
+  valueQuantidadeItens:{
+    marginLeft: 10,
+    height: 40,
+    width: 40,
+    borderRadius: 5,
+    backgroundColor: '#4AA857',
+  }
 
 });
 
