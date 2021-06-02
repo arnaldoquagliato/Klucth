@@ -98,8 +98,6 @@ const App = () => {
         let res = await fetch("/api/products");
         let data = await res.json();
         data.error ? console.log(data.error) : setProducts(data.products);
-        console.log("data")
-        console.log(res)
       } catch (error) {
         console.log(error.message);
       }
@@ -168,6 +166,7 @@ const App = () => {
               price={item.price}
               promoPrice={item.price}
               size={item.price}
+              id={item.id}
             />
           )}
           horizontal

@@ -7,7 +7,7 @@ import { Dimensions } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const Card = ({name, uriImg, price, size}) => {
+const Card = ({name, uriImg, price, size, id}) => {
   return (
     <View style={styles.container}>
       <View style={styles.imgContent}>
@@ -45,7 +45,7 @@ const Card = ({name, uriImg, price, size}) => {
         </Text>
       </View>
 
-      <Button priceItem={(price-(price*0.1)).toFixed(2)}/>
+      <Button priceItem={(price-(price*0.1)).toFixed(2)} idProduct={id}/>
       
     </View>  
   );
