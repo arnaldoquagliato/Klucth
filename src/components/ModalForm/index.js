@@ -11,8 +11,6 @@ import {ProductsContext} from "../../context/ProductsContext";
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const products = [1,2,3,4]
-
 
 const ModalForm = ({modalVisible, handleModal, products}) => {
   const { totalPrice, setTotalPrice, setQuantidade, carrinho, setCarrinho} = useContext(ProductsContext)

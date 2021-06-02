@@ -108,6 +108,7 @@ const App = () => {
     fetchProducts()
   }, [])
 
+  
   const onChangeText = (text) => {
     setText(text)
   }
@@ -289,7 +290,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#434946',
     paddingTop: 2,
     height:  windowHeight/35,
-    width: windowWidth/20,
+    width: windowWidth/15,
     borderRadius: 20,
     padding: 5,
     top: 1,

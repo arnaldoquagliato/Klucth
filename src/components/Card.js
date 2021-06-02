@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 import Button from './Button';
@@ -8,6 +8,11 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const Card = ({name, uriImg, price, size, id}) => {
+
+  const [valor, setValor] = useState(0)
+  const [valorPromo, setValorPromo] = useState(0)
+
+  
   return (
     <View style={styles.container}>
       <View style={styles.imgContent}>
@@ -15,7 +20,7 @@ const Card = ({name, uriImg, price, size, id}) => {
       </View>
       <View style={styles.contentValue}>
         <Text style={styles.mainValue}>
-          {(price-(price*0.1)).toFixed(2)}
+          {((price-(price*0.1))).toFixed(2)}
         </Text>
         <Text style={styles.promotionValue}>
           {price}
@@ -45,7 +50,7 @@ const Card = ({name, uriImg, price, size, id}) => {
         </Text>
       </View>
 
-      <Button priceItem={(price-(price*0.1)).toFixed(2)} />
+      <Button priceItem={price} priceItemPromo = {(price-(price*0.1)).toFixed(2)} setValor={setValor} setValorPromo={setValorPromo} valor={valor} valorPromo={valorPromo}/>
       
     </View>  
   );
