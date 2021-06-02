@@ -15,7 +15,7 @@ const products = [1,2,3,4]
 
 
 const ModalForm = ({modalVisible, handleModal, products}) => {
-  const {carrinho, totalPrice, setCarrinho, setTotalPrice, setQuantidade} = useContext(ProductsContext)
+  const { totalPrice, setTotalPrice, setQuantidade, carrinho, setCarrinho} = useContext(ProductsContext)
 
   const handleClean = () => {
     setCarrinho([])
@@ -78,7 +78,14 @@ const ModalForm = ({modalVisible, handleModal, products}) => {
               data={carrinho}
               keyExtractor={(item) => String(item.id)}
               renderItem ={({ item }) => (
-                <CardCarrinho />
+                <CardCarrinho 
+                  name={item.description}
+                  uriImg={item.image}
+                  price={item.price}
+                  promoPrice={item.price}
+                  size={item.price}
+                  id={item.id}
+                />
               )}
             />  
 

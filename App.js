@@ -7,10 +7,7 @@ import { ProductsContext } from "./src/context/ProductsContext";
 export default function App() {
   const [quantidade, setQuantidade] = useState(0)
   const [totalPrice, setTotalPrice] = useState(0)
-  const [carrinho, setCarrinho] = useState([{
-    produto:{},
-    quantidade:0
-  }])
+  const [carrinho, setCarrinho] = useState([])
 
   const [fontLoaded, setFontLoaded] = useState(false) 
 

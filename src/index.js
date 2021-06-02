@@ -86,10 +86,11 @@ const App = () => {
   const [text, setText] = useState('')
   const [showModal, setShowModal] = useState(false)
 
-  const {quantidade, totalPrice} = useContext(ProductsContext)
+  const {quantidade, totalPrice, setCarrinho} = useContext(ProductsContext)
 
   const handleModal = () => {
     setShowModal(!showModal);
+    setCarrinho(products)
   }
 
   useEffect(() => {
@@ -98,6 +99,7 @@ const App = () => {
         let res = await fetch("/api/products");
         let data = await res.json();
         data.error ? console.log(data.error) : setProducts(data.products);
+        setCarrinho(data.products)
       } catch (error) {
         console.log(error.message);
       }
@@ -209,7 +211,7 @@ const App = () => {
             </Text>
         </TouchableOpacity>
 
-        <ModalForm modalVisible={showModal} handleModal={handleModal} />
+        <ModalForm modalVisible={showModal} handleModal={handleModal}/>
     </View>
   );
 };

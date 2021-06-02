@@ -45,7 +45,7 @@ const Card = ({name, uriImg, price, size, id}) => {
         </Text>
       </View>
 
-      <Button priceItem={(price-(price*0.1)).toFixed(2)} idProduct={id}/>
+      <Button priceItem={(price-(price*0.1)).toFixed(2)} />
       
     </View>  
   );

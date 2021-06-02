@@ -4,31 +4,29 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { ProductsContext } from "../context/ProductsContext";
 
-const Button = ({priceItem, idProduct, produto}) => {
+const Button = ({priceItem, setValor, setValorPromo, priceItemPromo, valor, valorPromo}) => {
   const [value, setValue] = useState(0)
   const [showIncreDecre, setShowIncreDecre] = useState(false)
 
-  const {setQuantidade, quantidade, setTotalPrice, totalPrice, carrinho, setCarrinho} = useContext(ProductsContext)
+  const {setQuantidade, quantidade, setTotalPrice, totalPrice} = useContext(ProductsContext)
 
-  function changeCarrinho(){
-    if(carrinho){
-      const listaCarrinho = carrinho.find(item => item.id === idProduct)
-      if(listaCarrinho != undefined) setCarrinho(...carrinho, {produto: produto, quantidade:value})
-    }
-  }
   function handleIncrement(){
     setValue(value+1) 
     setQuantidade(quantidade+1)
-    setTotalPrice(parseFloat(priceItem)+parseFloat(totalPrice))
-    changeCarrinho()
+    setTotalPrice(parseFloat(priceItemPromo)+parseFloat(totalPrice))
+    setValor(parseFloat(priceItem)+parseFloat(valor))
+    setValorPromo(parseFloat(priceItemPromo)+parseFloat(valorPromo))
+    if(value>=1){
+    }
   }
   function handleDecrement(){
     value>0 ? setValue(value-1) : null
 
     if(quantidade>0 && value>=1){
       setQuantidade(quantidade-1)
-      setTotalPrice(parseFloat(totalPrice)-parseFloat(priceItem))
-      changeCarrinho()
+      setTotalPrice(parseFloat(totalPrice)-parseFloat(priceItemPromo))
+      setValor(parseFloat(valor)-parseFloat(priceItem))
+    setValorPromo(parseFloat(valorPromo)-parseFloat(priceItemPromo))
     }
     if(value === 1){
       setShowIncreDecre(false)
